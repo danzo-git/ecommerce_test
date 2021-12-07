@@ -44,8 +44,7 @@
 							</div>
 							<div class="topbar-menu right-menu">
 								<ul>
-									<li class="menu-item" ><a title="Register or Login" href="login.html">Login</a></li>
-									<li class="menu-item" ><a title="Register or Login" href="register.html">Register</a></li>
+								
 									<li class="menu-item lang-menu menu-item-has-children parent">
 										<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.png" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 										<ul class="submenu lang" >
@@ -55,7 +54,7 @@
 											<li class="menu-item" ><a title="canada" href="#"><span class="img label-before"><img src="assets/images/lang-can.png" alt="lang-can"></span>Canada</a></li>
 										</ul>
 									</li>
-									<li class="menu-item menu-item-has-children parent" >
+									{{-- <li class="menu-item menu-item-has-children parent" >
 										<a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 										<ul class="submenu curency" >
 											<li class="menu-item" >
@@ -68,7 +67,36 @@
 												<a title="Dollar (USD)" href="#">Dollar (USD)</a>
 											</li>
 										</ul>
-									</li>
+									</li> --}}
+									@if (Route::has('login'))
+										@auth
+											@if (Auth::user()->utype==='ADM')
+											<li class="menu-item menu-item-has-children parent" >
+												<a title="Dollar (USD)" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<ul class="submenu curency" >
+													<li class="menu-item" >
+														<a title="Pound (GBP)" href="#">Dashboard</a>
+													</li>
+												
+												</ul>
+											</li>
+
+											@else
+															<li class="menu-item menu-item-has-children parent" >
+																<a title="Dollar (USD)" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+																<ul class="submenu curency" >
+																	<li class="menu-item" >
+																		<a title="Pound (GBP)" href="#">Dashboard</a>
+															</li>
+											@endif
+											
+
+											@else
+											<li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Loogin</a></li>
+											<li class="menu-item" ><a title="Register or Login" href="{{route('register')}}">Register</a></li>
+										@endif
+										
+									@endif
 								</ul>
 							</div>
 						</div>
