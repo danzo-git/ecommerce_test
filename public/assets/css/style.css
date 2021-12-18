@@ -56,6 +56,9 @@ body{
 	color: #444444;
 	overflow-x: hidden;
 }
+.text-red-600{
+    color: red;
+}
 img{
 	max-width: 100%;
     height: auto;
